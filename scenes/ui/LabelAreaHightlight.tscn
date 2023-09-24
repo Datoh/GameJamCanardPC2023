@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://c13e2gwr3pvil"]
+
+[ext_resource type="Script" path="res://scenes/ui/LabelAreaHightlight.gd" id="1_fmu7o"]
+[ext_resource type="Texture2D" uid="uid://dnqafbetyave" path="res://assets/graphics/highlight.png" id="2_28ylk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb8wj"]
+atlas = ExtResource("2_28ylk")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi4qy"]
+atlas = ExtResource("2_28ylk")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awb6h"]
+atlas = ExtResource("2_28ylk")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfpsq"]
+atlas = ExtResource("2_28ylk")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ptwj"]
+atlas = ExtResource("2_28ylk")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc4h5"]
+atlas = ExtResource("2_28ylk")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stond"]
+atlas = ExtResource("2_28ylk")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_utjwg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb8wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi4qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awb6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfpsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ptwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc4h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stond")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="LabelAreaHightlight" type="Control" groups=["area_highlight"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_fmu7o")
+
+[node name="CaptureInput" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 2000.0
+offset_bottom = 2000.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_utjwg")
+autoplay = "default"
+frame_progress = 0.30046
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="gui_input" from="CaptureInput" to="." method="_on_capture_input_gui_input"]

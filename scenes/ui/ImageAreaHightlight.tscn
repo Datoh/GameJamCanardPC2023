@@ -1,0 +1,110 @@
+[gd_scene load_steps=14 format=3 uid="uid://divfhy7hyp6vg"]
+
+[ext_resource type="Script" path="res://scenes/ui/ImageAreaHighlight.gd" id="1_n3th3"]
+[ext_resource type="Texture2D" uid="uid://ctg12u5hqkcam" path="res://assets/graphics/GUI.png" id="2_wgbye"]
+[ext_resource type="Texture2D" uid="uid://dnqafbetyave" path="res://assets/graphics/highlight.png" id="3_4bnql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoqyq"]
+atlas = ExtResource("2_wgbye")
+region = Rect2(81, 97, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_00jrr"]
+texture = SubResource("AtlasTexture_uoqyq")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb8wj"]
+atlas = ExtResource("3_4bnql")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi4qy"]
+atlas = ExtResource("3_4bnql")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awb6h"]
+atlas = ExtResource("3_4bnql")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfpsq"]
+atlas = ExtResource("3_4bnql")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ptwj"]
+atlas = ExtResource("3_4bnql")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc4h5"]
+atlas = ExtResource("3_4bnql")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stond"]
+atlas = ExtResource("3_4bnql")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_psm6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb8wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi4qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awb6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfpsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ptwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc4h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stond")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="ImageAreaHightlight" type="Control" groups=["area_highlight"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_n3th3")
+
+[node name="CaptureInput" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 2000.0
+offset_bottom = 2000.0
+
+[node name="AreaPopup" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 19.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_00jrr")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="AreaPopup"]
+layout_mode = 2
+mouse_filter = 2
+stretch_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_psm6f")
+autoplay = "default"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="gui_input" from="CaptureInput" to="." method="_on_capture_input_gui_input"]

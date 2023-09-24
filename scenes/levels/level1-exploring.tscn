@@ -1,0 +1,1348 @@
+[gd_scene load_steps=24 format=3 uid="uid://dqnxcoy0i2p7i"]
+
+[ext_resource type="Texture2D" uid="uid://c7nby4pef54b3" path="res://assets/graphics/level1/level1-main.png" id="1_c0vf0"]
+[ext_resource type="Script" path="res://scenes/levels/level1-exploring.gd" id="1_gbp1s"]
+[ext_resource type="Texture2D" uid="uid://bpd0x5qfqkwi7" path="res://assets/graphics/level1/level1-closet.png" id="2_hpanp"]
+[ext_resource type="PackedScene" uid="uid://divfhy7hyp6vg" path="res://scenes/ui/ImageAreaHightlight.tscn" id="5_huei6"]
+[ext_resource type="PackedScene" uid="uid://5wwylqxe61xa" path="res://scenes/ui/DoorAreaHighlight.tscn" id="5_o55ou"]
+[ext_resource type="Texture2D" uid="uid://bjdjadhwj4u42" path="res://assets/graphics/level1/zoom-ab.png" id="6_exe7r"]
+[ext_resource type="Texture2D" uid="uid://beef4km1lwqvy" path="res://assets/graphics/level1/cpc1.png" id="7_otwim"]
+[ext_resource type="Texture2D" uid="uid://ctg12u5hqkcam" path="res://assets/graphics/GUI.png" id="8_5k1js"]
+[ext_resource type="PackedScene" uid="uid://c13e2gwr3pvil" path="res://scenes/ui/LabelAreaHightlight.tscn" id="8_r7bsj"]
+[ext_resource type="PackedScene" uid="uid://cby5cwb5d0yy4" path="res://scenes/ui/WordAreaHighlight.tscn" id="9_ny4ir"]
+[ext_resource type="Script" path="res://scenes/Clue.gd" id="10_1s3v6"]
+[ext_resource type="Texture2D" uid="uid://b85gy4cd5131j" path="res://assets/graphics/level1/cadavre.png" id="10_e6jt0"]
+[ext_resource type="Texture2D" uid="uid://b1wcam8ihmny4" path="res://assets/graphics/level1/level1-weapons.png" id="13_euakn"]
+[ext_resource type="Texture2D" uid="uid://bsa7fvpji248i" path="res://assets/graphics/level1/zoom-ser.png" id="13_lsdw6"]
+[ext_resource type="Texture2D" uid="uid://dywej5upfprm" path="res://assets/graphics/level1/zoom-ig-ndf.png" id="14_m7g5p"]
+[ext_resource type="Texture2D" uid="uid://41ku82ptvdit" path="res://assets/graphics/level1/photo-ig.png" id="14_uxmxh"]
+[ext_resource type="Texture2D" uid="uid://ctj2x821m1pm8" path="res://assets/graphics/level1/photo-ser.png" id="15_poq4g"]
+[ext_resource type="Texture2D" uid="uid://b8javvvk53wi4" path="res://assets/graphics/level1/photo-zz.png" id="16_8b8yk"]
+[ext_resource type="Texture2D" uid="uid://c6jslvykfk48c" path="res://assets/graphics/level1/photo-jbb.png" id="17_67h5l"]
+[ext_resource type="Texture2D" uid="uid://cadgtjru54yq2" path="res://assets/graphics/level1/photo-ab.png" id="18_hda3x"]
+[ext_resource type="Texture2D" uid="uid://d03fjjxdqf0yh" path="res://assets/graphics/level1/zoom-zz.png" id="21_xwii6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snicb"]
+atlas = ExtResource("8_5k1js")
+region = Rect2(49, 97, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ijsr0"]
+texture = SubResource("AtlasTexture_snicb")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+
+[node name="Level1Exploring" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_gbp1s")
+
+[node name="ExploringCloset" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="ExploringCloset"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 875.0
+texture = ExtResource("2_hpanp")
+stretch_mode = 3
+
+[node name="DoorAreaHighLight" parent="ExploringCloset" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 1296.0
+offset_top = 408.0
+offset_right = 1360.0
+offset_bottom = 784.0
+destination = NodePath("../../ExploringMain")
+
+[node name="AreaCPCHW" parent="ExploringCloset" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+offset_left = 560.0
+offset_top = 536.0
+offset_right = 600.0
+offset_bottom = 592.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringCloset/AreaCPCHW"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.4
+anchor_top = -18.2857
+anchor_right = 20.6084
+anchor_bottom = -11.4643
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringCloset/AreaCPCHW/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "[b][i]Note de service[/i][/b]
+
+Suite aux nombreux incidents des mois précedénts, voici les nouvelles consignes pour la salle des [b][u][i]rédacteurs[/i][/u][/b] de CPC Hardware:
+- Ne jamais rentrer seul
+- Vérifier à [b][u][i]fermer[/i][/u][/b] la porte avec le cadenas en sortant
+- Les nourrir une fois par jour suffit
+- Ne jamais introduire de produit Apple dans cette salle
+
+I. G."
+metadata/_edit_lock_ = true
+
+[node name="RedacteursAreaHighlight" parent="ExploringCloset/AreaCPCHW" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+visible = false
+offset_left = 136.0
+offset_top = -320.0
+offset_right = 280.0
+offset_bottom = -288.0
+label = NodePath("../AreaPopup/RichTextLabel")
+word_clue_in_label = "rédacteurs"
+
+[node name="Clue" type="Node" parent="ExploringCloset/AreaCPCHW/RedacteursAreaHighlight"]
+script = ExtResource("10_1s3v6")
+label = "rédacteurs"
+
+[node name="EnfermeAreaHighlight2" parent="ExploringCloset/AreaCPCHW" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+visible = false
+offset_left = -184.0
+offset_top = -240.0
+offset_right = -96.0
+offset_bottom = -208.0
+label = NodePath("../AreaPopup/RichTextLabel")
+word_clue_in_label = "fermer"
+
+[node name="Clue" type="Node" parent="ExploringCloset/AreaCPCHW/EnfermeAreaHighlight2"]
+script = ExtResource("10_1s3v6")
+label = "enferme"
+type = 2
+
+[node name="AreaCPC1" parent="ExploringCloset" instance=ExtResource("5_huei6")]
+layout_mode = 0
+offset_left = 1144.0
+offset_top = 776.0
+offset_right = 1208.0
+offset_bottom = 832.0
+pivot_offset = Vector2(-48, -352)
+texture_popup = ExtResource("7_otwim")
+
+[node name="AreaCadaver" parent="ExploringCloset" instance=ExtResource("5_huei6")]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 728.0
+offset_right = 960.0
+offset_bottom = 808.0
+pivot_offset = Vector2(56, -280)
+texture_popup = ExtResource("10_e6jt0")
+
+[node name="AreaZoomCadaver" parent="ExploringCloset/AreaCadaver" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+visible = false
+offset_left = 72.0
+offset_top = -184.0
+offset_right = 120.0
+offset_bottom = -152.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringCloset/AreaCadaver/AreaZoomCadaver"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.33333
+anchor_top = -18.5
+anchor_right = 13.2708
+anchor_bottom = -15.5625
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringCloset/AreaCadaver/AreaZoomCadaver/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Un lecteur de Canard PC mort, frappé à la tête."
+metadata/_edit_lock_ = true
+
+[node name="Clue" type="Node" parent="ExploringCloset/AreaCadaver/AreaZoomCadaver"]
+script = ExtResource("10_1s3v6")
+label = "frappé"
+type = 2
+
+[node name="AreaCPCArchive" parent="ExploringCloset" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+offset_left = 768.0
+offset_top = 400.0
+offset_right = 1112.0
+offset_bottom = 720.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringCloset/AreaCPCArchive"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.06977
+anchor_top = -1.575
+anchor_right = 2.17733
+anchor_bottom = -1.48125
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringCloset/AreaCPCArchive/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Archives Canard PC 2003-2023"
+metadata/_edit_lock_ = true
+
+[node name="AreaLadder" parent="ExploringCloset" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+offset_left = 800.0
+offset_top = 496.0
+offset_right = 848.0
+offset_bottom = 760.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringCloset/AreaLadder"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.83333
+anchor_top = -1.93939
+anchor_right = 12.2708
+anchor_bottom = -1.82576
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringCloset/AreaLadder/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Une échelle."
+metadata/_edit_lock_ = true
+
+[node name="Clue" type="Node" parent="ExploringCloset/AreaLadder"]
+script = ExtResource("10_1s3v6")
+label = "tombé"
+type = 2
+
+[node name="ExploringMain" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="ExploringMain"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 875.0
+texture = ExtResource("1_c0vf0")
+stretch_mode = 2
+
+[node name="AreaAB" parent="ExploringMain" instance=ExtResource("5_huei6")]
+layout_mode = 0
+offset_left = 1488.0
+offset_top = 392.0
+offset_right = 1632.0
+offset_bottom = 480.0
+pivot_offset = Vector2(-504, -120)
+texture_popup = ExtResource("6_exe7r")
+
+[node name="AreaTrash" parent="ExploringMain/AreaAB" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+visible = false
+offset_left = -464.0
+offset_top = 112.0
+offset_right = -432.0
+offset_bottom = 144.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaAB/AreaTrash"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -10.25
+anchor_top = -27.75
+anchor_right = 10.6563
+anchor_bottom = -10.4063
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaAB/AreaTrash/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "=== E-mail envoyé === [i](supprimé le 05/09/2023)[/i]
+Cher Tim,
+Je vous informe que le prochain CanardPC contient un test de Fortnite, le jeu n'a pas été bien perçu et aura la note de 2/10. Cependant, si vous consentez à un effort financier, nous pouvons nous arranger.
+
+=== E-mail envoyé === [i](supprimé le 10/09/2023)[/i]
+J'ai reçu un coup de file de Todd qui m'a dit que tu ne t'es pas pointé au rendez-vous à la Gamescom. Tu as encore inventé son interview ! Fais gaffe bientôt je ne pourrais plus te couvrir.
+
+=== E-mail reçu === [i](supprimé le 23/09/2023)[/i]
+Nous sommes ravis de vous informer que nous acceptons votre proposition de vente d'un test de Fortnite dans CanardPC (note minimum 9 sur 10). Nous aimerions que cette transaction reste confidentielle pour des raisons évidentes.
+Tim S."
+metadata/_edit_lock_ = true
+
+[node name="AreaArticle" parent="ExploringMain/AreaAB" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+visible = false
+offset_left = -456.0
+offset_top = 64.0
+offset_right = -432.0
+offset_bottom = 96.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaAB/AreaArticle"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 33.6667
+anchor_top = -27.0
+anchor_right = 51.2083
+anchor_bottom = -12.5625
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+pivot_offset = Vector2(-2.66553, 0)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaAB/AreaArticle/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "[b][i]Génance au ping pong[/i][/b]
+Hier soir à Montargis, dans un match de ping-pong intercommunal, un pongiste chevronné de 40 ans, a subi une défaite humiliante face à un prodige de 8 ans, marquant ainsi un moment oubliable dans l'histoire de ce sport. Malgré son expérience, le vétéran a été dépassé par l'incroyable agilité et la précision du jeune adversaire, laissant les spectateurs interdits par cet exploit inattendu.
+[i](Le parisien - 26/09/2023)[/i]"
+metadata/_edit_lock_ = true
+
+[node name="AreaZZPC" parent="ExploringMain" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 968.0
+offset_top = 264.0
+offset_right = 1136.0
+offset_bottom = 360.0
+destination = NodePath("../../PCZZ")
+
+[node name="AreaZZLivre" parent="ExploringMain" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+offset_left = 1168.0
+offset_top = 360.0
+offset_right = 1208.0
+offset_bottom = 392.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaZZLivre"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.0
+anchor_top = -21.0
+anchor_right = 18.325
+anchor_bottom = -17.5625
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaZZLivre/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Le petit livre rouge.
+Edition collecteur à la feuille d'or."
+metadata/_edit_lock_ = true
+
+[node name="AreaSER" parent="ExploringMain" instance=ExtResource("5_huei6")]
+layout_mode = 0
+offset_left = 1712.0
+offset_top = 416.0
+offset_right = 1800.0
+offset_bottom = 480.0
+pivot_offset = Vector2(-664, -256)
+texture_popup = ExtResource("13_lsdw6")
+
+[node name="AreaMedecine" parent="ExploringMain/AreaSER" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+visible = false
+offset_left = -264.0
+offset_top = -56.0
+offset_right = -208.0
+offset_bottom = 104.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaSER/AreaMedecine"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 4.85714
+anchor_top = -2.75
+anchor_right = 9.55357
+anchor_bottom = -2.55625
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaSER/AreaMedecine/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Du citrate de bétaïne."
+metadata/_edit_lock_ = true
+
+[node name="AreaMonkey" parent="ExploringMain/AreaSER" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+visible = false
+offset_left = -304.0
+offset_top = -200.0
+offset_right = -152.0
+offset_bottom = -112.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaSER/AreaMonkey"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.63158
+anchor_top = -5.81818
+anchor_right = 4.40132
+anchor_bottom = -5.11364
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaSER/AreaMonkey/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Une carte de visite du Monkey bar.
+Au dos: \"Whiskey + Vodka => 217€\"."
+metadata/_edit_lock_ = true
+
+[node name="AreaIGNDF" parent="ExploringMain" node_paths=PackedStringArray("extra_node") instance=ExtResource("5_huei6")]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 408.0
+offset_right = 264.0
+offset_bottom = 448.0
+pivot_offset = Vector2(128, -168)
+extra_node = NodePath("Label")
+texture_popup = ExtResource("14_m7g5p")
+
+[node name="Label" type="Label" parent="ExploringMain/AreaIGNDF"]
+visible = false
+layout_mode = 0
+offset_left = 168.0
+offset_top = -136.0
+offset_right = 416.0
+offset_bottom = 248.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Note de frais
+Juil - Sept 2023
+
+Train Cologne: 312€
+Repas Cologne: 217€
+Hotêl Cologne: 190€
+Clé FIFA 23: 29€
+
+
+
+
+Signature: "
+
+[node name="AreaIGLettre" parent="ExploringMain" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+offset_left = 288.0
+offset_top = 352.0
+offset_right = 368.0
+offset_bottom = 400.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaIGLettre"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 6.0
+anchor_top = -19.3333
+anchor_right = 12.2625
+anchor_bottom = -10.7083
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaIGLettre/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Monsieur,
+
+Je me permets de vous écrire pour vous révéler une vérité affreuse que je ne peux plus garder pour moi-même. En effet je soupçonne l'un de vos \"journalistes\" de nous mentir depuis des années.
+Afin de confondre cette horrible personne, je vous rendrais visite le 2 octobre pour que la vérité éclate. En effet, l'ultime preuve de cette vilénie se trouve dans vos locaux.
+
+Un fidèle lecteur."
+metadata/_edit_lock_ = true
+
+[node name="AreaJBBLettre" parent="ExploringMain" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+offset_left = 1120.0
+offset_top = 408.0
+offset_right = 1168.0
+offset_bottom = 432.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaJBBLettre"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 9.33333
+anchor_top = -32.0
+anchor_right = 17.7708
+anchor_bottom = -13.0833
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaJBBLettre/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Une lettre adressée à Canard PC:
+
+\"Sérieusement, pour la 43ème fois, votre poème a été rejeté par L'autoroute de Sable. On pourrait penser qu'à ce stade, vous auriez saisi que vos créations ne sont tout simplement pas à la hauteur de nos normes. Votre insistance à nous soumettre vos piètres tentatives de poésie devient presque comique. Merci de bien vouloir épargner notre temps précieux à l'avenir.\""
+metadata/_edit_lock_ = true
+
+[node name="AreaJBBPoeme" parent="ExploringMain" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+offset_left = 1040.0
+offset_top = 376.0
+offset_right = 1088.0
+offset_bottom = 424.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaJBBPoeme"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.66667
+anchor_top = -16.1667
+anchor_right = 6.9375
+anchor_bottom = -8.375
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaJBBPoeme/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "A l'attention de L'autoroute de Sable.
+
+Une nouveau poèsie, qui je les père vous plaira:
+
+Dans l'oscurité profonde, je marche cent fin,
+A la recherche du sens, perdu dans mon splein.
+Mai rêve sont oufs, mes espoirs sont vins,
+Dans ce monde cruelle, je me sens si mal sein.
+
+Sous la lune pâl, je erre sans goal précie,
+Les étoiles se cache, mon âme est en crise.
+Mes panser s'emmêle, mes souvenir sans foui,
+Dans ce triste poème, mes rime sont moins pires."
+metadata/_edit_lock_ = true
+
+[node name="AreaWeapons" parent="ExploringMain" instance=ExtResource("5_huei6")]
+layout_mode = 0
+offset_left = 1592.0
+offset_top = 104.0
+offset_right = 1856.0
+offset_bottom = 224.0
+pivot_offset = Vector2(-416, 184)
+texture_popup = ExtResource("13_euakn")
+
+[node name="AreaRaquette" parent="ExploringMain/AreaWeapons" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+visible = false
+offset_left = -192.0
+offset_top = 224.0
+offset_right = -72.0
+offset_bottom = 416.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaWeapons/AreaRaquette"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.4
+anchor_top = -2.45833
+anchor_right = 4.70833
+anchor_bottom = -2.17708
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaWeapons/AreaRaquette/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Une raquette de ping
+pong pour débutant."
+metadata/_edit_lock_ = true
+
+[node name="Clue" type="Node" parent="ExploringMain/AreaWeapons/AreaRaquette"]
+script = ExtResource("10_1s3v6")
+label = "raquette"
+type = 1
+
+[node name="AreaLivre" parent="ExploringMain/AreaWeapons" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+visible = false
+offset_left = -400.0
+offset_top = 200.0
+offset_right = -296.0
+offset_bottom = 440.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaWeapons/AreaLivre"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.07692
+anchor_top = -1.86667
+anchor_right = 4.38525
+anchor_bottom = -1.58542
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaWeapons/AreaLivre/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "La pleiade pour les nuls."
+metadata/_edit_lock_ = true
+
+[node name="Clue" type="Node" parent="ExploringMain/AreaWeapons/AreaLivre"]
+script = ExtResource("10_1s3v6")
+label = "livre"
+type = 1
+
+[node name="AreaMateau" parent="ExploringMain/AreaWeapons" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+visible = false
+offset_left = -328.0
+offset_top = 480.0
+offset_right = -208.0
+offset_bottom = 616.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaWeapons/AreaMateau"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.0
+anchor_top = -3.52941
+anchor_right = 4.30833
+anchor_bottom = -3.13235
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaWeapons/AreaMateau/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Un marteau en argent massif !!!"
+metadata/_edit_lock_ = true
+
+[node name="Clue" type="Node" parent="ExploringMain/AreaWeapons/AreaMateau"]
+script = ExtResource("10_1s3v6")
+label = "marteau"
+type = 1
+
+[node name="AreaBouteille" parent="ExploringMain/AreaWeapons" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+visible = false
+offset_left = -56.0
+offset_top = 416.0
+offset_right = 32.0
+offset_bottom = 648.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaWeapons/AreaBouteille"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.45455
+anchor_top = -1.86207
+anchor_right = 5.76288
+anchor_bottom = -1.46501
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaWeapons/AreaBouteille/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Une bouteille vide de vin de piètre qualité."
+metadata/_edit_lock_ = true
+
+[node name="Clue" type="Node" parent="ExploringMain/AreaWeapons/AreaBouteille"]
+script = ExtResource("10_1s3v6")
+label = "bouteille"
+type = 1
+
+[node name="AreaLingot" parent="ExploringMain/AreaWeapons" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+visible = false
+offset_left = 32.0
+offset_top = 272.0
+offset_right = 144.0
+offset_bottom = 360.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/AreaWeapons/AreaLingot"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.78571
+anchor_top = -6.18182
+anchor_right = 5.09821
+anchor_bottom = -5.56818
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/AreaWeapons/AreaLingot/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "Un lingot d'or frappé d'un bitcoin."
+metadata/_edit_lock_ = true
+
+[node name="Clue" type="Node" parent="ExploringMain/AreaWeapons/AreaLingot"]
+script = ExtResource("10_1s3v6")
+label = "lingot"
+type = 1
+
+[node name="DoorAreaHighLight" parent="ExploringMain" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 616.0
+offset_top = 32.0
+offset_right = 760.0
+offset_bottom = 360.0
+destination = NodePath("../../ExploringCloset")
+
+[node name="CPC0AreaHighLight" parent="ExploringMain" node_paths=PackedStringArray("area_popup", "label") instance=ExtResource("8_r7bsj")]
+offset_left = 1192.0
+offset_top = 56.0
+offset_right = 1248.0
+offset_bottom = 128.0
+area_popup = NodePath("AreaPopup")
+label = NodePath("AreaPopup/RichTextLabel")
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringMain/CPC0AreaHighLight"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.71429
+anchor_top = -8.88889
+anchor_right = 5.55357
+anchor_bottom = -5.68056
+offset_left = -384.0
+offset_top = 616.0
+offset_right = -365.0
+offset_bottom = 634.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExploringMain/CPC0AreaHighLight/AreaPopup"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "La couverture du CanardPC 448:
+
+- Déjà 20 ans:  présentation de l'équipe
+- Fornite: Attention chef d'oeuvre
+- Fifa 2023: Touche froide
+- Starfield: interview de Todd Howard
+- ..."
+metadata/_edit_lock_ = true
+
+[node name="CPC1AreaHighLight" parent="ExploringMain" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 1288.0
+offset_top = 64.0
+offset_right = 1336.0
+offset_bottom = 128.0
+destination = NodePath("../../ExploringBio1")
+
+[node name="CPC2AreaHighLight" parent="ExploringMain" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 1360.0
+offset_top = 56.0
+offset_right = 1400.0
+offset_bottom = 120.0
+destination = NodePath("../../ExploringBio2")
+
+[node name="ExploringBio1" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringBio1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.4
+anchor_right = 36.6
+anchor_bottom = 21.875
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="ExploringBio1"]
+layout_mode = 2
+offset_left = 540.0
+offset_top = 24.0
+offset_right = 1379.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "L'équipe depuis 20 ans"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IGPhoto" type="TextureRect" parent="ExploringBio1"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 96.0
+offset_right = 663.0
+offset_bottom = 319.0
+texture = ExtResource("14_uxmxh")
+expand_mode = 1
+
+[node name="IGBio" type="RichTextLabel" parent="ExploringBio1"]
+layout_mode = 2
+offset_left = 680.0
+offset_top = 88.0
+offset_right = 1432.0
+offset_bottom = 344.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b][u][i]Igor[/i][/u][/b] [b][u][i]Gaudotine[/i][/u][/b]
+
+Mon autorité est absolue, j'ai déployé une utilisation stratégique de la blockchain pour renforcer mon contrôle sur la diffusion de l'information, façonnant ainsi le récit à ma convenance. Cette technologie, tout en me permettant de maintenir une mainmise sur le contenu médiatique, crée une aura de transparence et de sécurité, masquant habilement les coulisses de mon autoritarisme. Mon expertise dans la blockchain continue d'être un outil puissant pour façonner mon empire médiatique."
+
+[node name="WordAreaHighlight" parent="ExploringBio1/IGBio" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+offset_right = 48.0
+offset_bottom = 32.0
+label = NodePath("..")
+word_clue_in_label = "Igor"
+
+[node name="Clue" type="Node" parent="ExploringBio1/IGBio/WordAreaHighlight"]
+script = ExtResource("10_1s3v6")
+label = "Igor"
+
+[node name="WordAreaHighlight2" parent="ExploringBio1/IGBio" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+offset_left = 56.0
+offset_right = 168.0
+offset_bottom = 32.0
+label = NodePath("..")
+word_clue_in_label = "Gaudotine"
+
+[node name="Clue" type="Node" parent="ExploringBio1/IGBio/WordAreaHighlight2"]
+script = ExtResource("10_1s3v6")
+label = "Gaudotine"
+
+[node name="SERPhoto" type="TextureRect" parent="ExploringBio1"]
+layout_mode = 0
+offset_left = 1232.0
+offset_top = 360.0
+offset_right = 1423.0
+offset_bottom = 584.0
+texture = ExtResource("15_poq4g")
+expand_mode = 1
+
+[node name="SERBio" type="RichTextLabel" parent="ExploringBio1"]
+layout_mode = 2
+offset_left = 488.0
+offset_top = 360.0
+offset_right = 1224.0
+offset_bottom = 592.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b][u][i]Sue-Ellen[/i][/u][/b] [b][u][i]Refill[/i][/u][/b]
+
+Je me plonge dans des univers virtuels pour échapper aux défis personnels qui obscurcissent parfois mon chemin. Les pixels s'effacent dans un flou éthylique, mais les étoiles dans le ciel nocturne m'offrent une évasion sobre vers les mystères de l'astronomie, une fascination qui me guide vers une lumière plus saine. Entre manettes et télescopes, ma vie est une dualité que j'explore à chaque niveau."
+
+[node name="WordAreaHighlight" parent="ExploringBio1/SERBio" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+offset_right = 104.0
+offset_bottom = 32.0
+label = NodePath("..")
+word_clue_in_label = "Sue-Ellen"
+
+[node name="Clue" type="Node" parent="ExploringBio1/SERBio/WordAreaHighlight"]
+script = ExtResource("10_1s3v6")
+label = "Sue-Ellen"
+
+[node name="WordAreaHighlight2" parent="ExploringBio1/SERBio" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+offset_left = 104.0
+offset_right = 168.0
+offset_bottom = 32.0
+label = NodePath("..")
+word_clue_in_label = "Refill"
+
+[node name="Clue" type="Node" parent="ExploringBio1/SERBio/WordAreaHighlight2"]
+script = ExtResource("10_1s3v6")
+label = "Refill"
+
+[node name="ZZPhoto" type="TextureRect" parent="ExploringBio1"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 624.0
+offset_right = 671.0
+offset_bottom = 847.0
+texture = ExtResource("16_8b8yk")
+expand_mode = 1
+flip_h = true
+
+[node name="ZZBio" type="RichTextLabel" parent="ExploringBio1"]
+layout_mode = 2
+offset_left = 688.0
+offset_top = 624.0
+offset_right = 1424.0
+offset_bottom = 848.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b][u][i]Zi[/i][/u][/b] [b][u][i]Zivara[/i][/u][/b]
+
+Ardent défenseur des idéaux marxistes, je m'efforce de mettre en lumière les aspects sociaux de l'industrie tout en naviguant discrètement à travers les opportunités financières qui se présentent. Mes analyses critiques visent à sensibiliser à la justice, mais je demeure conscient des réalités économiques qui façonnent notre monde."
+
+[node name="WordAreaHighlight" parent="ExploringBio1/ZZBio" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+offset_right = 24.0
+offset_bottom = 32.0
+label = NodePath("..")
+word_clue_in_label = "Zi"
+
+[node name="Clue" type="Node" parent="ExploringBio1/ZZBio/WordAreaHighlight"]
+script = ExtResource("10_1s3v6")
+label = "Zi"
+
+[node name="WordAreaHighlight2" parent="ExploringBio1/ZZBio" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+offset_left = 24.0
+offset_right = 96.0
+offset_bottom = 32.0
+label = NodePath("..")
+word_clue_in_label = "Zivara"
+
+[node name="Clue" type="Node" parent="ExploringBio1/ZZBio/WordAreaHighlight2"]
+script = ExtResource("10_1s3v6")
+label = "Zivara"
+
+[node name="DoorAreaHighLight" parent="ExploringBio1" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 456.0
+offset_bottom = 872.0
+destination = NodePath("../../ExploringMain")
+hide_highlight = true
+
+[node name="DoorAreaHighLight2" parent="ExploringBio1" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 1464.0
+offset_top = 0.0
+offset_right = 1920.0
+offset_bottom = 872.0
+destination = NodePath("../../ExploringMain")
+hide_highlight = true
+
+[node name="ExploringBio2" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AreaPopup" type="PanelContainer" parent="ExploringBio2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.4
+anchor_right = 36.6
+anchor_bottom = 21.875
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ijsr0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="ExploringBio2"]
+layout_mode = 2
+offset_left = 540.0
+offset_top = 24.0
+offset_right = 1379.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "L'équipe depuis 20 ans"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JBBPhoto" type="TextureRect" parent="ExploringBio2"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 96.0
+offset_right = 663.0
+offset_bottom = 319.0
+texture = ExtResource("17_67h5l")
+expand_mode = 1
+
+[node name="JBBBio" type="RichTextLabel" parent="ExploringBio2"]
+layout_mode = 2
+offset_left = 688.0
+offset_top = 96.0
+offset_right = 1416.0
+offset_bottom = 341.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b][u][i]JB[/i][/u][/b] [b][u][i]Bouton[/i][/u][/b]
+
+Je me délecte de chaque aventure virtuel comme d'une œuvre d'art, chère chant a capter les sens de ces mondes imaginaires à travers des mots empraint de lyrisme. Mon objectif est de trans sans-dé la simple critique pour évoquer des émotions profonde et des flexions poétiques dans chaque jeu que j'explore. Entre les pixelles et les méta-forts, je trace un chemin où le jeu devient une expérience littéraire appart entiére."
+
+[node name="WordAreaHighlight" parent="ExploringBio2/JBBBio" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+offset_right = 24.0
+offset_bottom = 32.0
+label = NodePath("..")
+word_clue_in_label = "JB"
+
+[node name="Clue" type="Node" parent="ExploringBio2/JBBBio/WordAreaHighlight"]
+script = ExtResource("10_1s3v6")
+label = "JB"
+
+[node name="WordAreaHighlight2" parent="ExploringBio2/JBBBio" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+offset_left = 32.0
+offset_right = 112.0
+offset_bottom = 32.0
+label = NodePath("..")
+word_clue_in_label = "Bouton"
+
+[node name="Clue" type="Node" parent="ExploringBio2/JBBBio/WordAreaHighlight2"]
+script = ExtResource("10_1s3v6")
+label = "Bouton"
+
+[node name="ABPhoto" type="TextureRect" parent="ExploringBio2"]
+layout_mode = 0
+offset_left = 1232.0
+offset_top = 360.0
+offset_right = 1423.0
+offset_bottom = 583.0
+texture = ExtResource("18_hda3x")
+expand_mode = 1
+flip_h = true
+
+[node name="ABBio" type="RichTextLabel" parent="ExploringBio2"]
+layout_mode = 2
+offset_left = 488.0
+offset_top = 360.0
+offset_right = 1224.0
+offset_bottom = 584.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b][u][i]A[/i][/u][/b] [b][u][i]Bout[/i][/u][/b]
+
+Journaliste de jeux vidéo depuis plus de 30 ans, je jongle entre mon clavier et ma manette, mais la lassitude a fini par s'installer. Les pixels et les péripéties virtuelles m'ont laissé épuisé, cherchant un nouveau souffle. Entre deux critiques, je trouve désormais refuge dans le rythme apaisant de la petite balle blanche, où chaque rebond devient un instant de répit bienvenu."
+
+[node name="WordAreaHighlight" parent="ExploringBio2/ABBio" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+offset_right = 24.0
+offset_bottom = 32.0
+label = NodePath("..")
+word_clue_in_label = "A"
+
+[node name="Clue" type="Node" parent="ExploringBio2/ABBio/WordAreaHighlight"]
+script = ExtResource("10_1s3v6")
+label = "A"
+
+[node name="WordAreaHighlight2" parent="ExploringBio2/ABBio" node_paths=PackedStringArray("label") instance=ExtResource("9_ny4ir")]
+offset_left = 32.0
+offset_right = 112.0
+offset_bottom = 32.0
+label = NodePath("..")
+word_clue_in_label = "Bout"
+
+[node name="Clue" type="Node" parent="ExploringBio2/ABBio/WordAreaHighlight2"]
+script = ExtResource("10_1s3v6")
+label = "Bout"
+
+[node name="DoorAreaHighLight" parent="ExploringBio2" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 456.0
+offset_bottom = 872.0
+destination = NodePath("../../ExploringMain")
+hide_highlight = true
+
+[node name="DoorAreaHighLight2" parent="ExploringBio2" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 1464.0
+offset_top = 0.0
+offset_right = 1920.0
+offset_bottom = 872.0
+destination = NodePath("../../ExploringMain")
+hide_highlight = true
+
+[node name="PCZZ" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="PCZZ"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 508.0
+offset_right = 1368.0
+offset_bottom = 875.0
+grow_horizontal = 2
+texture = ExtResource("21_xwii6")
+
+[node name="DoorAreaHighLight" parent="PCZZ" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 528.0
+offset_bottom = 872.0
+destination = NodePath("../../ExploringMain")
+hide_highlight = true
+
+[node name="DoorAreaHighLight2" parent="PCZZ" node_paths=PackedStringArray("destination") instance=ExtResource("5_o55ou")]
+offset_left = 1384.0
+offset_top = 0.0
+offset_right = 1920.0
+offset_bottom = 880.0
+destination = NodePath("../../ExploringMain")
+hide_highlight = true

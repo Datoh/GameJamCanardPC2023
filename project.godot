@@ -10,27 +10,32 @@ config_version=5
 
 [application]
 
-config/name="MyGame"
-run/main_scene="res://scenes/boot/godot/GodotBootsplashScene.tscn"
+config/name="CanardPC: nid d'escrocs"
+config/version="0.1"
+run/main_scene="res://scenes/MainMenuScene.tscn"
 config/features=PackedStringArray("4.2")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+config/icon="res://assets/graphics/level1/cadavre.png"
 
 [autoload]
 
 UserSettings="*res://settings/UserSettings.gd"
+GlobalPopup="*res://GlobalPopup.gd"
 
 [display]
 
-window/size/viewport_width=576
-window/size/viewport_height=324
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/window_width_override=1920
 window/size/window_height_override=1080
-window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://assets/graphics/cursorHand_grey.png"
 
 [gui]
 
 theme/custom="res://ui/theme.tres"
+theme/custom_font="res://assets/fonts/PixeloidSans.ttf"
 
 [input]
 
@@ -87,10 +92,8 @@ pause={
 ]
 }
 
-[internationalization]
-
-locale/translations=PackedStringArray("res://i18n/translation.de.translation", "res://i18n/translation.en.translation")
-
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.211765, 0.239216, 0.321569, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

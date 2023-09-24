@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqqihht5r6kev"]
+
+[ext_resource type="Script" path="res://scenes/ui/ClueContainer.gd" id="1_q425h"]
+[ext_resource type="Texture2D" uid="uid://ctg12u5hqkcam" path="res://assets/graphics/GUI.png" id="2_y80t3"]
+
+[node name="ClueContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 48.0
+script = ExtResource("1_q425h")
+color_people = Color(0.0705882, 0.305882, 0.537255, 1)
+color_object = Color(0.45098, 0.243137, 0.223529, 1)
+color_reason = Color(0.0980392, 0.235294, 0.243137, 1)
+color_place = Color(0.635294, 0.14902, 0.2, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 48.0
+texture = ExtResource("2_y80t3")
+region_rect = Rect2(49, 97, 30, 30)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.0705882, 0.305882, 0.537255, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

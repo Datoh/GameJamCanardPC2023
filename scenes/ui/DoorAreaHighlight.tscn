@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://5wwylqxe61xa"]
+
+[ext_resource type="Script" path="res://scenes/ui/DoorAreaHighLight.gd" id="1_fbk60"]
+[ext_resource type="Texture2D" uid="uid://dnqafbetyave" path="res://assets/graphics/highlight.png" id="2_jsetv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb8wj"]
+atlas = ExtResource("2_jsetv")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi4qy"]
+atlas = ExtResource("2_jsetv")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awb6h"]
+atlas = ExtResource("2_jsetv")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfpsq"]
+atlas = ExtResource("2_jsetv")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ptwj"]
+atlas = ExtResource("2_jsetv")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc4h5"]
+atlas = ExtResource("2_jsetv")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stond"]
+atlas = ExtResource("2_jsetv")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dq64r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb8wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi4qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awb6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfpsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ptwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc4h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stond")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="DoorAreaHighLight" type="Control" groups=["area_highlight", "door"]]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 864.0
+offset_top = 560.0
+offset_right = 952.0
+offset_bottom = 632.0
+script = ExtResource("1_fbk60")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dq64r")
+autoplay = "default"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

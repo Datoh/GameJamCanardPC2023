@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cby5cwb5d0yy4"]
+
+[ext_resource type="Script" path="res://scenes/ui/WordAreaHighlight.gd" id="1_e3lno"]
+
+[node name="WordAreaHighlight" type="Control" groups=["area_highlight"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 16.0
+script = ExtResource("1_e3lno")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
